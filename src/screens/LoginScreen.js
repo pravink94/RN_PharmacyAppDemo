@@ -1,20 +1,30 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { userNameChanged, passwordChanged, loginUser } from '../actions';
+import {  loginUser } from '../actions';
 
 import { CommonActions } from '@react-navigation/native';
 import { ParentView, ImageView, RtlTextView, Headline, Button, Input, ChildView, BlankView, Spinner } from '../components';
 
 class LoginScreen extends Component {
+    state = {
+        username: '',
+        password: '',
+        loading: false,
+        error: ''
+    };
 
     onUserNameChange(text) {
-        this.props.userNameChanged(text);
+        this.setState({ username: text, loading: false, error: '' });
     }
     onPasswordChanged(text) {
-        this.props.passwordChanged(text);
+        this.setState({ password: text, loading: false, error: '' });
     }
     onLoginButtonPress() {
         const { username, password } = this.props;
+        this.setState({
+            loading: true,
+            error: ''
+        });
         this.props.loginUser({ username, password });
     }
     onRegisterButtonPress() {
@@ -29,7 +39,7 @@ class LoginScreen extends Component {
     }
     renderLoginStatus() {
 
-        if (this.props.loading) {
+        if (this.state.loading) {
             return <Spinner size="large" />;
         }
         return (
@@ -54,7 +64,7 @@ class LoginScreen extends Component {
                     placeholder="Ex: Pravin"
                     autoCorrect={false}
                     onChangeText={this.onUserNameChange.bind(this)}
-                    value={this.props.username}
+                        value={this.state.username}
                 />
                     <BlankView />
                 <Input
@@ -63,7 +73,7 @@ class LoginScreen extends Component {
                     secureTextEntry={true}
                     autoCorrect={false}
                     onChangeText={this.onPasswordChanged.bind(this)}
-                    value={this.props.password}
+                        value={this.state.password}
                 />
                     <BlankView />
                     <RtlTextView label="Forgot Password" />
@@ -81,11 +91,11 @@ class LoginScreen extends Component {
     }
 }
 
-const mapStateToProps = (state) => {
-    const { username, password, error, loading } = state.loginAuth;
-    return {
-        username, password, error, loading
-    };
-};
+// const mapStateToProps = (state) => {
+//     const { username, password, error, loading } = state.loginAuth;
+//     return {
+//         username, password, error, loading
+//     };
+// };
 
-export default connect(mapStateToProps, { userNameChanged, passwordChanged, loginUser })(LoginScreen);
+export default connect(null, {  loginUser })(LoginScreen);

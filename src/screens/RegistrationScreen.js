@@ -4,36 +4,52 @@ import * as ImagePicker from 'react-native-image-picker';
 import { connect } from 'react-redux';
 import { CommonActions } from '@react-navigation/native';
 
-import { refCodeChanged, ownerNameChanged, phoneNumberChanged, userNameChanged, passwordChanged, addLicenseImage, removeLicenseImage, registerUser } from '../actions';
+import { registerUser } from '../actions';
 
 import { ParentView, BlankView, ScreenTitle, Button, Input, Spinner, SmallImageView, HorizontalLine, ChildView, ItemImageView } from '../components';
 import { BLACK, PRIMARY_COLOR, WHITE } from '../values/Color';
 
 
 class RegistrationScreen extends Component {
+    state = { refCode: '',
+    ownerName: '',
+    phoneNumber: '',
+    username: '',
+    password: '',
+    user: null,
+    loading: false,
+    error: '',
+    licenseImages: [] };
 
     onRefCodeChange(text) {
-        this.props.refCodeChanged(text);
-    }
+        this.setState({ refCode: text, loading: false, error: ''});
+        }
     onOwnerNameChange(text) {
-        this.props.ownerNameChanged(text);
+        this.setState({ ownerName: text, loading: false, error: ''});
     }
     onPhoneNumberChange(text) {
-        this.props.phoneNumberChanged(text);
+        this.setState({ phoneNumber: text, loading: false, error: ''});
     }
     onUserNameChange(text) {
-        this.props.userNameChanged(text);
+        this.setState({ username: text, loading: false, error: ''});
     }
     onPasswordChanged(text) {
-        this.props.passwordChanged(text);
+        this.setState({ password: text, loading: false, error: ''});
     }
-
     onAddLicenseImage(image) {
-        this.props.addLicenseImage(image);
+        const newArray = this.state.licenseImages;
+        newArray.push(image);
+        this.setState({ licenseImages: newArray, loading: false, error: '' });
     }
 
     onImageRemoveFromList = (image) => {
-        this.props.removeLicenseImage(image);
+        var imageArray = this.state.licenseImages;
+        var index = imageArray.indexOf(image)
+            if (index !== -1) {
+                imageArray.splice(index, 1);
+            }
+        console.log(imageArray.length);
+        this.setState({ licenseImages: imageArray, loading: false, error: '' });
     }
 
     onLoginButtonPress() {
@@ -48,12 +64,16 @@ class RegistrationScreen extends Component {
     }
 
     onRegisterButtonPress() {
-        const { refCode, ownerName, phoneNumber, username, password, licenseImages } = this.props;
+        const { refCode, ownerName, phoneNumber, username, password, licenseImages } = this.state;
+        this.setState({
+            loading: true,
+            error: ''
+         });
         this.props.registerUser({ refCode, ownerName, phoneNumber, username, password, licenseImages });
     }
  
     renderRegisterStatus() {
-        if (this.props.loading) {
+        if (this.state.loading) {
             return <Spinner size="large" />;
         }
         return (
@@ -108,28 +128,28 @@ class RegistrationScreen extends Component {
                         placeholder="Enter Referral or Promo code"
                         autoCorrect={false}
                         onChangeText={this.onRefCodeChange.bind(this)}
-                        value={this.props.refCode} />
+                        value={this.state.refCode} />
                     <BlankView />
                     <Input
                         label="Owner Name"
                         placeholder="Enter Owner Name"
                         autoCorrect={false}
                         onChangeText={this.onOwnerNameChange.bind(this)}
-                        value={this.props.ownerName} />
+                        value={this.state.ownerName} />
                     <BlankView />
                     <Input
                         label="Phone Number"
                         placeholder="Enter Phone number"
                         autoCorrect={false}
                         onChangeText={this.onPhoneNumberChange.bind(this)}
-                        value={this.props.phoneNumber} />
+                        value={this.state.phoneNumber} />
                     <BlankView />
                     <Input
                         label="Email ID"
                         placeholder="Enter Email ID"
                         autoCorrect={false}
                         onChangeText={this.onUserNameChange.bind(this)}
-                        value={this.props.username} />
+                        value={this.state.username} />
                     <BlankView />
 
                     <Input
@@ -138,7 +158,7 @@ class RegistrationScreen extends Component {
                         secureTextEntry={true}
                         autoCorrect={false}
                         onChangeText={this.onPasswordChanged.bind(this)}
-                        value={this.props.password}
+                        value={this.state.password}
                     />
                     <BlankView />
 
@@ -155,7 +175,7 @@ class RegistrationScreen extends Component {
                     <FlatList
                         showsHorizontalScrollIndicator={false}
                         horizontal={true}
-                        data={this.props.licenseImages}
+                        data={this.state.licenseImages}
                         keyExtractor={(image) => image.id}
                         renderItem={({ item }) => {
                             return (
@@ -207,10 +227,10 @@ const styles = {
     },
 };
 
-const mapStateToProps = state => {
-    const { refCode, ownerName, phoneNumber, username, password, loading, error, licenseImages } = state.registrationAuth;
-    return { refCode, ownerName, phoneNumber, username, password, loading, error, licenseImages };
-}
-export default connect(mapStateToProps,
-    { refCodeChanged, ownerNameChanged, phoneNumberChanged, userNameChanged, passwordChanged, addLicenseImage, removeLicenseImage, registerUser }
+// const mapStateToProps = state => {
+//     const { refCode, ownerName, phoneNumber, username, password, loading, error, licenseImages } = state.registrationAuth;
+//     return { refCode, ownerName, phoneNumber, username, password, loading, error, licenseImages };
+// }
+export default connect(null,
+    {  registerUser }
 )(RegistrationScreen);
