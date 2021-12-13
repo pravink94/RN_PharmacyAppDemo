@@ -20,7 +20,7 @@ class LoginScreen extends Component {
         this.setState({ password: text, loading: false, error: '' });
     }
     onLoginButtonPress() {
-        const { username, password } = this.props;
+        const { username, password } = this.state;
         this.setState({
             loading: true,
             error: ''
