@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, View } from 'react-native';
-import { PRIMARY_COLOR, SECONDARY_COLOR_PRIME, SECONDARY_COLOR, WHITE, BLACK, BORDER_COLOR } from '../values/Color';
+import { COLORS } from '../assets';
 
 const Header = (props) => {
     const { textStyle, viewStyle } = styles;
@@ -14,12 +14,12 @@ const Header = (props) => {
 
 const styles = {
     viewStyle: {
-        backgroundColor: SECONDARY_COLOR,
+        backgroundColor: COLORS.secondary_color,
         justifyContent: 'center',
         alignItems: 'center',
         height: 60,
         paddingTop: 15,
-        shadowColor: BLACK,
+        shadowColor: COLORS.black,
         shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.2,
         elevation: 2,

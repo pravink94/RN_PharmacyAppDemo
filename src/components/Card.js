@@ -1,6 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
-import { PRIMARY_COLOR, SECONDARY_COLOR_PRIME, SECONDARY_COLOR, WHITE, BLACK } from '../values/Color';
+import { COLORS } from '../assets';
 
 const Card = (props) => {
     return (
@@ -14,9 +14,9 @@ const styles = {
     containerStyle: {
         borderWidth: 1,
         borderRadius: 2,
-        borderColor:WHITE,
+        borderColor:COLORS.border,
         borderBottomWidth: 0,
-        shadowColor: BLACK,
+        shadowColor: COLORS.gray,
         shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.1,
         shadowRadius: 2,

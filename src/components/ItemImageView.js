@@ -1,6 +1,5 @@
 import React from 'react';
 import { TouchableOpacity, Image, View, ImageBackground } from 'react-native';
-import { PRIMARY_COLOR } from '../values/Color';
 
 const ItemImageView = ({ showRemoveIcon, source, tintColor, onDeleteIconPress }) => {
     const { appImageStyle, deleteIconStyle, viewStyle } = styles;

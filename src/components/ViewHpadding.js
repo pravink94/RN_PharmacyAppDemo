@@ -1,6 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
-import { WHITE } from '../values/Color';
+import { COLORS } from '../assets';
 
 const ViewHpadding = ({ children }) => {
   const { viewStyle } = styles;
@@ -15,7 +15,7 @@ const ViewHpadding = ({ children }) => {
 const styles = {
   viewStyle: {
     flex: 1,
-    backgroundColor: WHITE,
+    backgroundColor: COLORS.background_sky,
     paddingHorizontal: 20,
     flexDirection: 'column',
   },

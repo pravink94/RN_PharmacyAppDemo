@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-import { PRIMARY_COLOR, SECONDARY_COLOR_PRIME, SECONDARY_COLOR, WHITE, BLACK, BORDER_COLOR } from '../values/Color';
+import { COLORS } from '../assets';
 
 const Headline = ({ label }) => {
     const { headlineTextStyle } = styles;
@@ -17,7 +17,7 @@ const styles = {
         fontSize: 22,
         textAlign: 'center',
         fontWeight: "bold",
-        color: PRIMARY_COLOR,
+        color: COLORS.primary_color,
         marginBottom: 20
     },
 };

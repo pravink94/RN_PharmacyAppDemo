@@ -1,6 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
-import { GRAY } from '../values/Color';
+import { COLORS } from '../assets';
 
 const HorizontalLine = () => {
   const { viewStyle } = styles;
@@ -15,7 +15,7 @@ const HorizontalLine = () => {
 const styles = {
   viewStyle: {
     height:1,
-    backgroundColor: GRAY,
+    backgroundColor: COLORS.gray,
     },
 };
 

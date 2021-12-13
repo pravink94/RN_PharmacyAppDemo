@@ -1,9 +1,9 @@
 import React from 'react';
 import { View, SafeAreaView, ScrollView, StatusBar } from 'react-native';
-import { PRIMARY_COLOR, SECONDARY_COLOR_PRIME, SECONDARY_COLOR, WHITE, BLACK, BORDER_COLOR } from '../values/Color';
+import { COLORS } from '../assets';
 
 const ChildView = ({ children }) => {
-  const { container,scrollView,viewStyle } = styles;
+  const { viewStyle } = styles;
 
   return (
         <View style={viewStyle}>
@@ -14,7 +14,7 @@ const ChildView = ({ children }) => {
 
 const styles = {
   viewStyle: {
-    backgroundColor: WHITE,
+    backgroundColor: COLORS.background_sky,
     marginHorizontal:16,
     justfyContent: 'center',
     flexDirection: 'column',

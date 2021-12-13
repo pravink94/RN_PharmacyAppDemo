@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-import { PRIMARY_COLOR, SECONDARY_COLOR_PRIME, SECONDARY_COLOR, WHITE, BLACK, BORDER_COLOR } from '../values/Color';
+import { COLORS } from '../assets';
 
 const ScreenTitle = ({ label }) => {
     const { headlineTextStyle } = styles;
@@ -17,7 +17,7 @@ const styles = {
         fontSize: 22,
         textAlign: 'left',
         fontWeight: "bold",
-        color: BLACK,
+        color: COLORS.black,
     },
 };
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
-import { PRIMARY_COLOR, SECONDARY_COLOR_PRIME, SECONDARY_COLOR, WHITE } from '../values/Color';
+import { COLORS } from '../assets';
 
 const Button = ({ onPress, label, type }) => {
   const { buttonViewStyle, buttonStyle, cancelButtonStyle } = styles;
@@ -33,21 +33,21 @@ const styles = {
     justifyContent: 'center'
   },
   buttonStyle: {
-    backgroundColor: PRIMARY_COLOR ,
-    color: WHITE,
+    backgroundColor: COLORS.primary_color ,
+    color: COLORS.white,
     fontWeight: "bold",
     borderWidth: 1,
-    borderColor: PRIMARY_COLOR,
+    borderColor: COLORS.primary_color,
     textAlign: "center",
     fontSize: 18,
     lineHeight: 50,
   },
   cancelButtonStyle: {
-    backgroundColor: WHITE,
-    color: PRIMARY_COLOR,
+    backgroundColor: COLORS.background_sky,
+    color: COLORS.primary_color,
     fontWeight: "bold",
     borderWidth: 1,
-    borderColor: PRIMARY_COLOR,
+    borderColor: COLORS.primary_color,
     textAlign: "center",
     fontSize: 18,
     lineHeight: 50,

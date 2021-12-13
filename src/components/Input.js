@@ -1,6 +1,6 @@
 import React from 'react';
 import { TextInput, View, Text } from 'react-native';
-import { PRIMARY_COLOR, SECONDARY_COLOR_PRIME, SECONDARY_COLOR, WHITE, BLACK, BORDER_COLOR } from '../values/Color';
+import { COLORS } from '../assets';
 
 const Input = ({ label, value, onChangeText, placeholder, secureTextEntry }) => {
     const { inputViewStyle, labelStyle, inputStyle } = styles;
@@ -31,9 +31,9 @@ const styles = {
         fontWeight: "bold",
     },
     inputStyle: {
-        color: BLACK,
+        color: COLORS.black,
         borderWidth: 1,
-        borderColor: PRIMARY_COLOR,
+        borderColor: COLORS.primary_color,
         fontSize: 18,
         lineHeight: 20,
     },

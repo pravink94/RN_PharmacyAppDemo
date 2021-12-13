@@ -1,6 +1,6 @@
 import React from 'react';
 import { TouchableOpacity, Image } from 'react-native';
-import { PRIMARY_COLOR } from '../values/Color';
+import { COLORS } from '../assets';
 
 const SmallImageView = ({ source, tintColor, onPress }) => {
     const { appImageStyle } = styles;
@@ -21,7 +21,7 @@ const styles = {
         height: 70,
         borderRadius: 8,
         borderWidth: 1.5,
-        borderColor: PRIMARY_COLOR
+        borderColor: COLORS.primary_color
     },
 };
 

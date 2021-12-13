@@ -3,11 +3,11 @@ import { FlatList, Text } from 'react-native';
 import * as ImagePicker from 'react-native-image-picker';
 import { connect } from 'react-redux';
 import { CommonActions } from '@react-navigation/native';
+import { COLORS } from '../assets';
 
 import { registerUser } from '../actions';
 
 import { ParentView, BlankView, ScreenTitle, Button, Input, Spinner, SmallImageView, HorizontalLine, ChildView, ItemImageView } from '../components';
-import { BLACK, PRIMARY_COLOR, WHITE } from '../values/Color';
 
 
 class RegistrationScreen extends Component {
@@ -165,7 +165,7 @@ class RegistrationScreen extends Component {
                     <Text style={styles.headline}>Upload Drug License</Text>
                     <BlankView />
                     <SmallImageView
-                        tintColor={PRIMARY_COLOR}
+                        tintColor={COLORS.primary_color}
                         source={require('../../assets/ic_image_upload.png')}
                         onPress={() => {
                             this.imageGalleryLaunch();
@@ -209,20 +209,20 @@ class RegistrationScreen extends Component {
 
 const styles = {
     textStyle: {
-        backgroundColor: WHITE,
+        backgroundColor: COLORS.white,
         marginTop: 10,
         textAlign: 'center',
     },
     textStyle2: {
         width: 70,
-        color: BLACK,
+        color: COLORS.black,
         textAlign: 'center',
     },
     headline: {
-        color: BLACK,
+        color: COLORS.black,
         fontSize: 17,
         fontWeight: "bold",
-        backgroundColor: WHITE,
+        backgroundColor: COLORS.white,
         textAlign: 'left',
     },
 };

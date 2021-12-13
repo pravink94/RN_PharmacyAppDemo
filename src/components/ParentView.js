@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, SafeAreaView, ScrollView, StatusBar } from 'react-native';
-import { PRIMARY_COLOR, SECONDARY_COLOR_PRIME, SECONDARY_COLOR, WHITE, BLACK, BORDER_COLOR } from '../values/Color';
+import { COLORS } from '../assets';
 
 const ParentView = ({ children }) => {
   const { container,scrollView,viewStyle } = styles;
@@ -22,7 +22,7 @@ const ParentView = ({ children }) => {
 const styles = {
   viewStyle: {
     flex: 1,
-    backgroundColor: WHITE,
+    backgroundColor: COLORS.white,
     paddingVertical: 20,
     marginHorizontal:16,
     justfyContent: 'center',
@@ -30,11 +30,11 @@ const styles = {
   },
   container: {
     flex: 1,
-    backgroundColor: WHITE,
+    backgroundColor: COLORS.white,
   // paddingTop: StatusBar.currentHeight,
   },
   scrollView: {
-    backgroundColor: WHITE,
+    backgroundColor: COLORS.white,
   },
 };
 

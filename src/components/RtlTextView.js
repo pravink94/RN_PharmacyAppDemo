@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-import { PRIMARY_COLOR, SECONDARY_COLOR_PRIME, SECONDARY_COLOR, WHITE, BLACK, BORDER_COLOR } from '../values/Color';
+import { COLORS } from '../assets';
 
 const RtlTextView = ({ label, value, onChangeText }) => {
     const { inputViewStyle, rtlLabelStyle } = styles;
@@ -19,7 +19,7 @@ const styles = {
     },
      rtlLabelStyle: {
         fontSize: 15,
-        color: PRIMARY_COLOR,
+        color: COLORS.primary_color,
         fontWeight: "bold",
         textAlign: "right"
     },
