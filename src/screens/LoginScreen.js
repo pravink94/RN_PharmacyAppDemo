@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { userNameChanged, passwordChanged, loginUser } from '../actions';
 
-import { ParentView, ImageView, RtlTextView, Headline, Button, Input, Spinner } from '../components';
+import { CommonActions } from '@react-navigation/native';
+import { ParentView, ImageView, RtlTextView, Headline, Button, Input, ChildView, BlankView, Spinner } from '../components';
 
 class LoginScreen extends Component {
 
@@ -17,7 +18,14 @@ class LoginScreen extends Component {
         this.props.loginUser({ username, password });
     }
     onRegisterButtonPress() {
-
+        this.props.navigation.dispatch(
+            CommonActions.reset({
+                index: 0,
+                routes: [
+                    { name: 'RegistrationScreen' }
+                ],
+            })
+        );
     }
     renderLoginStatus() {
 
@@ -39,13 +47,16 @@ class LoginScreen extends Component {
                 <Headline label="Welcome To Pharmacy App" />
                 <ImageView
                     source={require('../../assets/forest.jpg')} />
-                <Input
+                <BlankView />
+                <ChildView>
+                 <Input
                     label="User Name"
                     placeholder="Ex: Pravin"
                     autoCorrect={false}
                     onChangeText={this.onUserNameChange.bind(this)}
                     value={this.props.username}
                 />
+                    <BlankView />
                 <Input
                     label="Password"
                     placeholder="Enter your password"
@@ -54,19 +65,23 @@ class LoginScreen extends Component {
                     onChangeText={this.onPasswordChanged.bind(this)}
                     value={this.props.password}
                 />
-                <RtlTextView label="Forgot Password" />
-                {this.renderLoginStatus()}
-                <Button
-                    type="negative"
-                    label="Register"
-                    onPress={this.onRegisterButtonPress.bind(this)}
-                />
+                    <BlankView />
+                    <RtlTextView label="Forgot Password" />
+                    <BlankView />
+                    {this.renderLoginStatus()}
+                    <BlankView />
+                    <Button
+                        type="negative"
+                        label="Register"
+                        onPress={this.onRegisterButtonPress.bind(this)}
+                    />
+                </ChildView>
             </ParentView>
         );
     }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
     const { username, password, error, loading } = state.loginAuth;
     return {
         username, password, error, loading

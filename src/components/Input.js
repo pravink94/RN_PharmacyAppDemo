@@ -23,7 +23,6 @@ const Input = ({ label, value, onChangeText, placeholder, secureTextEntry }) => 
 const styles = {
 
     inputViewStyle: {
-        marginBottom: 20,
         flexDirection: 'column',
         justfyContent: 'center'
     },

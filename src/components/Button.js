@@ -28,7 +28,6 @@ const Button = ({ onPress, label, type }) => {
 const styles = {
 
   buttonViewStyle: {
-    marginBottom: 20,
     marginHorizontal: 35,
     flexDirection: 'column',
     justifyContent: 'center'

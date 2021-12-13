@@ -14,8 +14,6 @@ const RtlTextView = ({ label, value, onChangeText }) => {
 
 const styles = {
     inputViewStyle: {
-        marginTop: 20,
-        marginHorizontal: 35,
         flexDirection: 'column',
         justfyContent: 'center'
     },

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { FlatList, Text } from 'react-native';
 import * as ImagePicker from 'react-native-image-picker';
 import { connect } from 'react-redux';
+import { CommonActions } from '@react-navigation/native';
 
 import { refCodeChanged, ownerNameChanged, phoneNumberChanged, userNameChanged, passwordChanged, addLicenseImage, removeLicenseImage, registerUser } from '../actions';
 
@@ -10,7 +11,6 @@ import { BLACK, PRIMARY_COLOR, WHITE } from '../values/Color';
 
 
 class RegistrationScreen extends Component {
-
 
     onRefCodeChange(text) {
         this.props.refCodeChanged(text);
@@ -37,7 +37,16 @@ class RegistrationScreen extends Component {
     }
 
     onLoginButtonPress() {
+        this.props.navigation.dispatch(
+            CommonActions.reset({
+                index: 0,
+                routes: [
+                    { name: 'LoginScreen' }
+                ],
+            })
+        );
     }
+
     onRegisterButtonPress() {
         const { refCode, ownerName, phoneNumber, username, password, licenseImages } = this.props;
         this.props.registerUser({ refCode, ownerName, phoneNumber, username, password, licenseImages });
@@ -100,24 +109,28 @@ class RegistrationScreen extends Component {
                         autoCorrect={false}
                         onChangeText={this.onRefCodeChange.bind(this)}
                         value={this.props.refCode} />
+                    <BlankView />
                     <Input
                         label="Owner Name"
                         placeholder="Enter Owner Name"
                         autoCorrect={false}
                         onChangeText={this.onOwnerNameChange.bind(this)}
                         value={this.props.ownerName} />
+                    <BlankView />
                     <Input
                         label="Phone Number"
                         placeholder="Enter Phone number"
                         autoCorrect={false}
                         onChangeText={this.onPhoneNumberChange.bind(this)}
                         value={this.props.phoneNumber} />
+                    <BlankView />
                     <Input
                         label="Email ID"
                         placeholder="Enter Email ID"
                         autoCorrect={false}
                         onChangeText={this.onUserNameChange.bind(this)}
                         value={this.props.username} />
+                    <BlankView />
 
                     <Input
                         label="Password"
@@ -127,6 +140,7 @@ class RegistrationScreen extends Component {
                         onChangeText={this.onPasswordChanged.bind(this)}
                         value={this.props.password}
                     />
+                    <BlankView />
 
                     <Text style={styles.headline}>Upload Drug License</Text>
                     <BlankView />
@@ -155,16 +169,16 @@ class RegistrationScreen extends Component {
                         }}
                     />
                     <BlankView />
-                    <BlankView />
 
                     {this.renderRegisterStatus()}
 
+                    <BlankView />
                     <HorizontalLine />
                     <Text style={styles.textStyle}>Already Registered</Text>
                     <Button
                         type="negative"
                         label="Login"
-                        onPress={() => { }}
+                        onPress={() => { this.onLoginButtonPress()}}
                     />
                 </ChildView>
             </ParentView>
