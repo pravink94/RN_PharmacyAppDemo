@@ -11,8 +11,8 @@ class App extends Component{
     const store = createStore(reducers, {}, applyMiddleware(ReduxThunk));
     return (
       <Provider store={store}>
-        <LoginScreen />
-        {/* <RegistrationScreen /> */}
+        {/* <LoginScreen /> */}
+        <RegistrationScreen />
       </Provider>
     );
   }
